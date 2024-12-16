@@ -1,0 +1,27 @@
+import threading
+import time
+
+start_time = time.time()
+
+def function_one():
+    for i in range(5):
+        print(f"Function One - iteration {i+1}")
+        time.sleep(1)
+
+def function_two():
+    for i in range(5):
+        print(f"Function Two - iteration {i+1}")
+        time.sleep(1.5)
+
+thread1 = threading.Thread(target=function_one)
+thread2 = threading.Thread(target=function_two)
+
+thread1.start()
+thread2.start()
+
+thread1.join()
+thread2.join()
+
+end_time = time.time()
+res_time = end_time - start_time
+print(f"{res_time} секунд")
